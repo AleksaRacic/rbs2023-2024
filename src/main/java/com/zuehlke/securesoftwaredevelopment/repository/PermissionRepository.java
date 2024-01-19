@@ -36,8 +36,7 @@ public class PermissionRepository {
                 permissions.add(new Permission(id, name));
             }
         } catch (SQLException e) {
-            LOG.warn("Could not get permissions", e);
-            e.printStackTrace();
+            LOG.warn("Could not get permissions: " + e.getMessage());
         }
         return permissions;
     }

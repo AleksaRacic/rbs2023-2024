@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7426b0dd-4e66-4785-9e7e-e97d54a4a898" name="Changes" comment="Third task">
+    <list default="true" id="7426b0dd-4e66-4785-9e7e-e97d54a4a898" name="Changes" comment="Added audit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/config/DatabaseAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/config/DatabaseAuthenticationProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/controller/GiftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/controller/GiftController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/controller/PersonsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/controller/PersonsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/controller/RatingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/controller/RatingsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/CommentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/GiftRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/GiftRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/HashedUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/HashedUserRepository.java" afterDir="false" />
@@ -20,7 +15,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/RoleRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/TagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/TagRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zuehlke/securesoftwaredevelopment/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +157,7 @@
       <workItem from="1703930999804" duration="25079000" />
       <workItem from="1705252609792" duration="5251000" />
       <workItem from="1705436786910" duration="7557000" />
-      <workItem from="1705682759634" duration="5346000" />
+      <workItem from="1705682759634" duration="7937000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit">
       <created>1670698325007</created>
@@ -195,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705686894875</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added audit">
+      <option name="closed" value="true" />
+      <created>1705688273448</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1705688273448</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +233,8 @@
     <MESSAGE value="Attack!" />
     <MESSAGE value="First task completed" />
     <MESSAGE value="Third task" />
-    <option name="LAST_COMMIT_MESSAGE" value="Third task" />
+    <MESSAGE value="Added audit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added audit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

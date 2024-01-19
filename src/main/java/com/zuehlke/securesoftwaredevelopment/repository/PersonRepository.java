@@ -102,8 +102,7 @@ public class PersonRepository {
             statement.setString(2, email);
             statement.executeUpdate();
         } catch (SQLException e) {
-            LOG.error("Could not update person");
-            e.printStackTrace();
+            LOG.error("Could not update person " + e.getMessage());
         }
         auditLogger.audit("Updated person with id " + personUpdate.getId());
     }

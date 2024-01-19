@@ -118,13 +118,11 @@ public class GiftRepository {
                         statement2.executeUpdate();
                     } catch (SQLException e) {
                         LOG.error("Could not add tag to gift");
-                        e.printStackTrace();
                     }
                 });
             }
         } catch (SQLException e) {
             LOG.warn("Could not create gift");
-            e.printStackTrace();
         }
         return id;
     }
@@ -144,7 +142,6 @@ public class GiftRepository {
             statement.executeUpdate(query4);
         } catch (SQLException e) {
             LOG.warn("Could not delete gift");
-            e.printStackTrace();
         }
     }
 

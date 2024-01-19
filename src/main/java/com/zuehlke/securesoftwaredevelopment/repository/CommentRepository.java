@@ -34,7 +34,6 @@ public class CommentRepository {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             LOG.warn("Could not create comment", e);
-            e.printStackTrace();
         }
     }
 
@@ -49,7 +48,6 @@ public class CommentRepository {
             }
         } catch (SQLException e) {
             LOG.error("Could not get comments", e);
-            e.printStackTrace();
         }
         return commentList;
     }

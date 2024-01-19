@@ -48,7 +48,6 @@ public class RatingRepository {
             }
         } catch (SQLException e) {
             LOG.warn("Could not create rating", e);
-            e.printStackTrace();
         }
     }
 
@@ -63,8 +62,7 @@ public class RatingRepository {
                 ratingList.add(new Rating(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
             }
         } catch (SQLException e) {
-            LOG.error("Could not get ratings", e);
-            e.printStackTrace();
+            LOG.error("Could not get ratings" + e.getMessage());
         }
         return ratingList;
     }

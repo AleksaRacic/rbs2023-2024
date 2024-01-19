@@ -34,7 +34,6 @@ public class HashedUserRepository {
             }
         } catch (SQLException e) {
             LOG.error("Could not get user");
-            e.printStackTrace();
         }
         return null;
     }
@@ -48,7 +47,7 @@ public class HashedUserRepository {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Could not save totp key");
         }
     }
 }

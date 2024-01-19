@@ -33,8 +33,7 @@ public class TagRepository {
                 tagList.add(new Tag(rs.getInt(1), rs.getString(2)));
             }
         } catch (SQLException e) {
-            LOG.warn("Could not get tags", e);
-            e.printStackTrace();
+            LOG.warn("Could not get tags" + e);
         }
         return tagList;
     }

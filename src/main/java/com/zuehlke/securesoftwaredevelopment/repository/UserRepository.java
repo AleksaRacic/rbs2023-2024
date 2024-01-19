@@ -36,8 +36,7 @@ public class UserRepository {
                 return new User(id, username1, password);
             }
         } catch (SQLException e) {
-            LOG.error("Could not get user");
-            e.printStackTrace();
+            LOG.error("Could not get user" + e.getMessage());
         }
         LOG.info("User {} not found", username);
         return null;
@@ -50,7 +49,7 @@ public class UserRepository {
              ResultSet rs = statement.executeQuery(query)) {
             return rs.next();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Could not get user");
         }
         return false;
     }
@@ -64,7 +63,6 @@ public class UserRepository {
             statement.executeUpdate(query);
         } catch (SQLException e) {
             LOG.error("Could not delete user", e);
-            e.printStackTrace();
         }
     }
 }
