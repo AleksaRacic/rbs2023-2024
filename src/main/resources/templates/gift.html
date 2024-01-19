@@ -54,7 +54,7 @@
           <label for="4">4</label>
           <input type="radio" id="5" name="rating" value="5">
           <label for="5">5</label>
-          <button id="rateGift" class="btn btn-primary mt-2">Rate</button>
+          <button id="rateGift" class="btn btn-primary mt-2" th:disabled="${not #authorization.expression('hasAuthority(''RATE_GIFT'')')}">Rate</button>
       </div>
       </form>
   </div>
@@ -68,8 +68,9 @@
   </div>
   <div class="form-group">
     <label for="addComment">Add comment</label>
-    <textarea class="form-control" id="addComment" rows="3" placeholder="Comment..."></textarea>
-    <button id="createComment" class="btn btn-primary mt-2">Create comment</button>
+    <textarea class="form-control" id="addComment" rows="3" placeholder="Comment..."
+    th:disabled="${not #authorization.expression('hasAuthority(''ADD_COMMENT'')')}"></textarea>
+    <button id="createComment" class="btn btn-primary mt-2" th:disabled="${not #authorization.expression('hasAuthority(''ADD_COMMENT'')')}">Create comment</button>
   </div>
 
   <script th:inline="javascript">

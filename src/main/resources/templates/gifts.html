@@ -42,7 +42,7 @@
       </tr>
       </tbody>
     </table>
-    <a href="/create-form">Add Gift</a>
+    <a href="/create-form" th:if="${#authorization.expression('hasAuthority(''CREATE_GIFT'')')}">Add Gift</a>
   </div>
   <template id="row-template">
     <tr>
