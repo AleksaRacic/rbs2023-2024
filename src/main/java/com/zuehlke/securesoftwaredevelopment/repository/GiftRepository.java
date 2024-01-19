@@ -37,6 +37,7 @@ public class GiftRepository {
                 giftList.add(gift);
             }
         } catch (SQLException e) {
+            LOG.error("Could not get gifts");
             e.printStackTrace();
         }
         return giftList;
@@ -55,6 +56,9 @@ public class GiftRepository {
             while (rs.next()) {
                 giftList.add(createGiftFromResultSet(rs));
             }
+        }catch (SQLException e) {
+            LOG.error("Could not get gifts");
+            e.printStackTrace();
         }
         return giftList;
     }
@@ -83,6 +87,7 @@ public class GiftRepository {
                 return gift;
             }
         } catch (SQLException e) {
+            LOG.error("Could not get gift");
             e.printStackTrace();
         }
 
@@ -90,6 +95,7 @@ public class GiftRepository {
     }
 
     public long create(NewGift gift, List<Tag> tagsToInsert) {
+        auditLogger.audit(String.format("Gift '%s' created", gift.getName()));
         String query = "INSERT INTO gift(name, description, price) VALUES(?, ?, ?)";
         long id = 0;
         try (Connection connection = dataSource.getConnection();
@@ -111,17 +117,20 @@ public class GiftRepository {
                         statement2.setInt(2, tag.getId());
                         statement2.executeUpdate();
                     } catch (SQLException e) {
+                        LOG.error("Could not add tag to gift");
                         e.printStackTrace();
                     }
                 });
             }
         } catch (SQLException e) {
+            LOG.warn("Could not create gift");
             e.printStackTrace();
         }
         return id;
     }
 
     public void delete(int giftId) {
+        auditLogger.audit(String.format("Gift '%s' deleted", giftId));
         String query = "DELETE FROM gift WHERE id = " + giftId;
         String query2 = "DELETE FROM ratings WHERE giftId = " + giftId;
         String query3 = "DELETE FROM comments WHERE giftId = " + giftId;
@@ -134,6 +143,7 @@ public class GiftRepository {
             statement.executeUpdate(query3);
             statement.executeUpdate(query4);
         } catch (SQLException e) {
+            LOG.warn("Could not delete gift");
             e.printStackTrace();
         }
     }

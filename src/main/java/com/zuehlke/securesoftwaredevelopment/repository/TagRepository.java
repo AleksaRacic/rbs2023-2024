@@ -23,6 +23,7 @@ public class TagRepository {
     }
 
     public List<Tag> getAll() {
+        LOG.debug("Getting all tags");
         List<Tag> tagList = new ArrayList<>();
         String query = "SELECT id, name FROM tags";
         try (Connection connection = dataSource.getConnection();
@@ -32,6 +33,7 @@ public class TagRepository {
                 tagList.add(new Tag(rs.getInt(1), rs.getString(2)));
             }
         } catch (SQLException e) {
+            LOG.warn("Could not get tags", e);
             e.printStackTrace();
         }
         return tagList;

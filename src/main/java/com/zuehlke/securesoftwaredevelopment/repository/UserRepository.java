@@ -23,6 +23,7 @@ public class UserRepository {
     }
 
     public User findUser(String username) {
+        LOG.info("Finding user {}", username);
         String query = "SELECT id, username, password FROM users WHERE username='" + username + "'";
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement();
@@ -31,11 +32,14 @@ public class UserRepository {
                 int id = rs.getInt(1);
                 String username1 = rs.getString(2);
                 String password = rs.getString(3);
+                LOG.info("Found user {}", username);
                 return new User(id, username1, password);
             }
         } catch (SQLException e) {
+            LOG.error("Could not get user");
             e.printStackTrace();
         }
+        LOG.info("User {} not found", username);
         return null;
     }
 
@@ -52,12 +56,14 @@ public class UserRepository {
     }
 
     public void delete(int userId) {
+        LOG.info("Deleting user {}", userId);
         String query = "DELETE FROM users WHERE id = " + userId;
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement();
         ) {
             statement.executeUpdate(query);
         } catch (SQLException e) {
+            LOG.error("Could not delete user", e);
             e.printStackTrace();
         }
     }

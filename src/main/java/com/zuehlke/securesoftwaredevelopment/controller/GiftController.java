@@ -130,7 +130,8 @@ public class GiftController {
     }
 
     @PostMapping("/buy-gift/{id}")
-    public String buyCar(@PathVariable("id") int id, @RequestParam(name = "count", required = true) int count, Address address, Model model) {
+    public String buyCar(@PathVariable("id") int id, @RequestParam(name = "count", required = true) int count, Address address, Model model, Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
         LOG.info("Buying gift: {}", id);
         if (address.getAddress().length() < 10) {
             LOG.debug("Address too short: {}", address.getAddress());
@@ -142,7 +143,7 @@ public class GiftController {
             return String.format("redirect:/buy-gift/%s", id);
         }
 
-        a
+        auditLogger.audit(String.format("Gift '%s' bought, by '%s'", id, user.getId()));
 
         return String.format("redirect:/buy-gift/%s?bought=true", id);
     }

@@ -21,6 +21,7 @@ public class HashedUserRepository {
     }
 
     public HashedUser findUser(String username) {
+        LOG.info("Finding user {}", username);
         String sqlQuery = "select passwordHash, salt, totpKey from hashedUsers where username = '" + username + "'";
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement();
@@ -32,6 +33,7 @@ public class HashedUserRepository {
                 return new HashedUser(username, passwordHash, salt, totpKey);
             }
         } catch (SQLException e) {
+            LOG.error("Could not get user");
             e.printStackTrace();
         }
         return null;

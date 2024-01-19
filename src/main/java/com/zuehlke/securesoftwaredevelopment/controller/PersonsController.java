@@ -42,13 +42,13 @@ public class PersonsController {
     public String person(@PathVariable int id, Model model, HttpSession session, Authentication principal) throws AccessDeniedException {
 
         User user = (User) principal.getPrincipal();
-        LOG.info("Person requesting update: {}", user.getUsername());
 
         // Check if the principal has UPDATE_PERSON authority or is updating their own profile
         boolean hasUpdateAuthority = principal.getAuthorities().contains(new SimpleGrantedAuthority("VIEW_PERSON"));
         boolean isUpdatingOwnProfile = user.getId() == id;
 
         if (!hasUpdateAuthority && !isUpdatingOwnProfile) {
+            LOG.warn("User {} does not have permission to update person {}", user.getUsername(), id);
             throw new AccessDeniedException("You do not have permission to update this person");
         }
 
@@ -63,6 +63,7 @@ public class PersonsController {
         String csrfToken = session.getAttribute("CSRF_TOKEN").toString();
         model.addAttribute("CSRF_TOKEN", csrfToken);
         User user = (User) authentication.getPrincipal();
+        LOG.info("User {} requesting own profile", user.getUsername());
         model.addAttribute("person", personRepository.get("" + user.getId()));
         return "person";
     }
@@ -78,9 +79,10 @@ public class PersonsController {
         if (!hasUpdateAuthority && !isUpdatingOwnProfile) {
             throw new AccessDeniedException("You do not have permission to update this person");
         }
+
         personRepository.delete(id);
         userRepository.delete(id);
-
+        auditLogger.audit("Deleted person with id " + id);
         return ResponseEntity.noContent().build();
     }
 
@@ -96,6 +98,7 @@ public class PersonsController {
 
         String sessionToken = session.getAttribute("CSRF_TOKEN").toString();
         if (!sessionToken.equals(csrfToken)) {
+            LOG.warn("CSRF Token invalid");
             throw new AccessDeniedException("CSRF Token invalid");
         }
 
@@ -104,10 +107,12 @@ public class PersonsController {
         boolean isUpdatingOwnProfile = user.getId() == Integer.parseInt(person.getId());
 
         if (!hasUpdateAuthority && !isUpdatingOwnProfile) {
+            LOG.warn("User {} does not have permission to update person {}", user.getUsername(), person.getId());
             throw new AccessDeniedException("You do not have permission to update this person");
         }
 
         personRepository.update(person);
+        auditLogger.audit("Updated person with id " + person.getId());
         return "redirect:/persons/" + person.getId();
     }
 

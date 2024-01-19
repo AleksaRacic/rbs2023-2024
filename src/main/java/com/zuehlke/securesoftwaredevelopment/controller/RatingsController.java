@@ -30,6 +30,7 @@ public class RatingsController {
         User user = (User) authentication.getPrincipal();
         rating.setUserId(user.getId());
         ratingRepository.createOrUpdate(rating);
+        LOG.info("User {} rated gift {} with {}", user.getUsername(), rating.getGiftId(), rating.getRating());
 
         return "redirect:/gifts?id=" + rating.getGiftId();
     }

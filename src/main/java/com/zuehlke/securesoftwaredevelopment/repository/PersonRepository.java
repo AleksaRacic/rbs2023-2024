@@ -34,6 +34,7 @@ public class PersonRepository {
                 personList.add(createPersonFromResultSet(rs));
             }
         } catch (SQLException e) {
+            LOG.error("Could not get persons");
             e.printStackTrace();
         }
         return personList;
@@ -77,6 +78,7 @@ public class PersonRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        auditLogger.audit("Deleted person with id " + personId);
     }
 
     private Person createPersonFromResultSet(ResultSet rs) throws SQLException {
@@ -100,7 +102,9 @@ public class PersonRepository {
             statement.setString(2, email);
             statement.executeUpdate();
         } catch (SQLException e) {
+            LOG.error("Could not update person");
             e.printStackTrace();
         }
+        auditLogger.audit("Updated person with id " + personUpdate.getId());
     }
 }

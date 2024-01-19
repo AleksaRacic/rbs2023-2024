@@ -24,6 +24,7 @@ public class RatingRepository {
     }
 
     public void createOrUpdate(Rating rating) {
+        LOG.debug("Creating rating {}", rating);
         String query = "SELECT giftId, userId, rating FROM ratings WHERE giftId = " + rating.getGiftId() + " AND userID = " + rating.getUserId();
         String query2 = "update ratings SET rating = ? WHERE giftId = ? AND userId = ?";
         String query3 = "insert into ratings(giftId, userId, rating) values (?, ?, ?)";
@@ -46,11 +47,13 @@ public class RatingRepository {
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
+            LOG.warn("Could not create rating", e);
             e.printStackTrace();
         }
     }
 
     public List<Rating> getAll(String giftId) {
+        LOG.debug("Getting ratings for gift {}", giftId);
         List<Rating> ratingList = new ArrayList<>();
         String query = "SELECT giftId, userId, rating FROM ratings WHERE giftId = " + giftId;
         try (Connection connection = dataSource.getConnection();
@@ -60,6 +63,7 @@ public class RatingRepository {
                 ratingList.add(new Rating(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
             }
         } catch (SQLException e) {
+            LOG.error("Could not get ratings", e);
             e.printStackTrace();
         }
         return ratingList;

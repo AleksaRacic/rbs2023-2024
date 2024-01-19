@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.logging.Logger;
+
 @Controller
 public class LoginController {
+
+    Logger LOG = Logger.getLogger(LoginController.class.getName());
 
     private final HashedUserRepository repository;
 

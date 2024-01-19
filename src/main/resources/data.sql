@@ -59,7 +59,7 @@ insert into permissions(id, name)
 values (1, 'ADD_COMMENT'),
        (2, 'VIEW_GIFT_LIST'),
        (3, 'CREATE_GIFT'),
-       (4, 'VIEW_PERSONS_LIST'),
+       (4, 'VIEW_PERSON_LIST'),
        (5, 'VIEW_PERSON'),
        (6, 'UPDATE_PERSON'),
        (7, 'VIEW_MY_PROFILE'),
